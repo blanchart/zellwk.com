@@ -8,7 +8,7 @@ tags:
   - regex
 ---
 
-Regular expressions are HARD! They look so complicated, they're turn me off completely most of the time. Sometimes I wished I was smarter so I can use them more effectively.
+Regular expressions are HARD! They look so complicated, they turn me off completely most of the time. Sometimes I wished I was smarter so I can use them more effectively.
 
 While working on Learn JavaScript, I noticed that using regular expressions effectively doesn't mean you need to write complicated regex. You can write super simple regex that solves a ton of problems.
 
@@ -84,13 +84,13 @@ The problem becomes slightly more complicated when we need to pass multiple prop
 <div tiny-props="[count, state.count] [message, state.message]"> ... </div>
 ```
 
-We cannot same `replace` code above for this new string. You'll get weird results.
+We cannot use the same `replace` code above for this new string. You'll get weird results.
 
 <figure role="figure">
   <img src="/images/2021/real-world-regex/weird.png" alt="">
 </figure>
 
-The culprit becomes obvious when omit the `split` and `trim` parts. You can clearly see `replace` only replaces the first instance of `[` and `]`.
+The culprit becomes obvious when we omit the `split` and `trim` parts. You can clearly see that `replace` only replaces the first instance of `[` and `]`.
 
 ```javascript
 const attribute = div.getAttribute('tiny-props')
@@ -138,15 +138,15 @@ console.log(props)
   <img src="/images/2021/real-world-regex/array.png" alt="">
 </figure>
 
-At this point we can loop through the `props` array to get the values we need. Each odd item is the property and each even item is the value needed.
+And now we can loop through the `props` array to get the values we need. Each odd item is the property and each even item is the value needed.
 
 ##  Combining the regular expressions
 
-Square brackets symbolizes OR in regular expressions. If we put any character inside square brackets, the regular expression will find the letter inside it.
+Square brackets symbolize OR in regular expressions. If we put any character inside square brackets, the regular expression will find the letter inside it.
 
 So if a regular expression says `/[abc]/, it will look for letter a, or letter b, or letter c.
 
-We can use this behaviour to combine all three `replace` call into a single one.
+We can use this behaviour to combine all three `replace` calls into a single one.
 
 ```javascript
 const props = attribute
@@ -159,7 +159,7 @@ This regular expression looks foreign and scary, but if you can trace back its o
 
 ## Making the code more robust
 
-Users can break the string by adding in unwanted spaces before or after the string. If they do this, we'll end up empty items which throws the array into disarray (Ha! 😂).
+Users can break the string by adding in unwanted spaces before or after the string. If they do this, we'll end up with empty items which throw the array into disarray (Ha! 😂).
 
 ```html
 <div tiny-props=" [count, state.count] [message, state.message] "> ... </div>
@@ -236,4 +236,4 @@ console.log(props)
 
 That's it!
 
-I hope this taught you a bit more about real-world regex usage. The regular expressions do not have to be complicated, unreadable, and overwhelming. It can be quite simple as long as you understand the principles behind it 😉.
+I hope this taught you a bit more about real-world regex usage. Regular expressions do not have to be complicated, unreadable, and overwhelming. They can be quite simple as long as you understand the principles behind them 😉.
